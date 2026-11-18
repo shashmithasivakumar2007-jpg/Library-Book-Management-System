@@ -1,0 +1,101 @@
+docs/
+  diagrams/
+    use_case_diagram.puml
+    use_case_diagram.png
+    class_diagram.puml
+    @startuml
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+top to bottom direction
+
+package "Model Layer" {
+    class Book {
+        - Long id
+        - String title
+        - String author
+        - String category
+        - int totalQuantity
+        - int availableQuantity
+        + Book()
+        + getTitle()
+        + getAuthor()
+        + getCategory()
+        + getAvailableQuantity()
+    }
+
+    class Student {
+        - Long id
+        - String name
+        - String rollNumber
+        - String email
+        + Student()
+        + getName()
+        + getRollNumber()
+        + getEmail()
+    }
+
+    class Loan {
+        - Long id
+        - LocalDate issueDate
+        - LocalDate dueDate
+        - LocalDate returnDate
+        + Loan()
+        + Loan(Book, Student)
+        + setReturnDate(LocalDate)
+        + isOverdue() : boolean
+    }
+}
+
+package "Repository Layer" {
+    interface BookRepository
+    interface StudentRepository
+    interface LoanRepository {
+        + findByReturnDateIsNull()
+        + findByStudentIdOrderByIssueDateDesc(Long)
+    }
+}
+
+package "Service Layer" {
+    class LibraryService {
+        - BookRepository books
+        - StudentRepository students
+        - LoanRepository loans
+        + books()
+        + students()
+        + loans()
+        + active()
+        + overdue()
+        + saveBook(Book)
+        + saveStudent(Student)
+        + issue(Long, Long)
+        + giveBack(Long)
+        + history(Long)
+    }
+}
+
+package "Web Layer" {
+    class LibraryController {
+        - LibraryService svc
+        + home(Model)
+        + book(Book)
+        + student(Student)
+        + issue(Long, Long)
+        + giveBack(Long)
+        + history(Long, Model)
+    }
+}
+
+Book "1" <-- "0..*" Loan : book
+Student "1" <-- "0..*" Loan : student
+
+BookRepository ..> Book
+StudentRepository ..> Student
+LoanRepository ..> Loan
+
+LibraryService --> BookRepository
+LibraryService --> StudentRepository
+LibraryService --> LoanRepository
+
+LibraryController --> LibraryService
+
+@enduml

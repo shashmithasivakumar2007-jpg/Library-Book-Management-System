@@ -1,0 +1,37 @@
+@startuml
+title Library Book Management System - Architecture
+
+top to bottom direction
+skinparam componentStyle rectangle
+
+actor Librarian
+
+rectangle "Presentation Layer" {
+    component "Web Interface\n(HTML + Bootstrap)" as UI
+}
+
+rectangle "Application Layer" {
+    component "Spring Boot Application" as APP
+    component "Library Controller" as CTRL
+    component "Library Service" as SERVICE
+    component "Repositories\n(Spring Data JPA)" as REPO
+}
+
+database "MySQL Database\n(library_db)" as DB
+
+rectangle "Data Analysis Layer" {
+    component "Python Script\n(Pandas + SQLAlchemy)" as PY
+    component "Data Visualization\n(Matplotlib + Seaborn)" as CHART
+}
+
+Librarian --> UI
+UI --> APP
+APP --> CTRL
+CTRL --> SERVICE
+SERVICE --> REPO
+REPO --> DB
+
+DB --> PY : Transaction Data
+PY --> CHART : Processed Data
+
+@enduml

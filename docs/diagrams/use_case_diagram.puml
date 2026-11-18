@@ -1,0 +1,37 @@
+@startuml
+left to right direction
+
+actor Librarian
+actor Analyst
+
+rectangle "Library Book Management System" {
+  usecase "Manage Books" as UC1
+  usecase "Manage Students" as UC2
+  usecase "Issue Book" as UC3
+  usecase "Return Book" as UC4
+  usecase "View Available Books" as UC5
+  usecase "View Issued Books" as UC6
+  usecase "View Overdue Books" as UC7
+  usecase "View Student Borrowing History" as UC8
+  usecase "Retrieve Transaction Data" as UC9
+  usecase "Preprocess Data" as UC10
+  usecase "Generate Visualizations" as UC11
+}
+
+Librarian --> UC1
+Librarian --> UC2
+Librarian --> UC3
+Librarian --> UC4
+Librarian --> UC5
+Librarian --> UC6
+Librarian --> UC7
+Librarian --> UC8
+
+Analyst --> UC9
+Analyst --> UC10
+Analyst --> UC11
+
+UC10 ..> UC9 : <<include>>
+UC11 ..> UC10 : <<include>>
+
+@enduml

@@ -1,0 +1,35 @@
+@startuml
+title Library Management System - ER Diagram
+
+entity BOOKS {
+    * id : BIGINT <<PK>>
+    --
+    title : VARCHAR
+    author : VARCHAR
+    category : VARCHAR
+    total_quantity : INT
+    available_quantity : INT
+}
+
+entity STUDENTS {
+    * id : BIGINT <<PK>>
+    --
+    name : VARCHAR
+    roll_number : VARCHAR
+    email : VARCHAR
+}
+
+entity LOANS {
+    * id : BIGINT <<PK>>
+    --
+    book_id : BIGINT <<FK>>
+    student_id : BIGINT <<FK>>
+    issue_date : DATE
+    due_date : DATE
+    return_date : DATE
+}
+
+BOOKS ||--o{ LOANS : contains
+STUDENTS ||--o{ LOANS : borrows
+
+@enduml

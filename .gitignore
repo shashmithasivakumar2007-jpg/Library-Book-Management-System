@@ -1,0 +1,22 @@
+# Maven
+target/
+
+# IDE
+.idea/
+.vscode/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Environment and secrets
+.env
+.env.*
+
+# Logs
+*.log
+
+# Generated outputs
+visualizations/
+out/
