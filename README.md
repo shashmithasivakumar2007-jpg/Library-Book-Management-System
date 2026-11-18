@@ -1,12 +1,19 @@
 # Library Book Management and Reading Pattern Analysis System
 
-**Scenario 07** — Java + DBMS + Software Engineering + Foundations of Data Science.
+**Scenario 07** — Java + DBMS + Software Engineering + Foundations of Data Science
 
 ## Project Overview
 
 The Library Book Management and Reading Pattern Analysis System is a web-based application designed to manage library operations and analyze student book-borrowing patterns.
 
 It allows users to manage books, register students, issue and return books, track overdue loans, view student borrowing history, and generate visual reports using Python.
+
+## Live Deployment
+
+- **Live Website:** Add your Railway public URL here.
+- **GitHub Repository:** https://github.com/shashmithasivakumar2007-jpg/Library-Book-Management-System
+
+The application is deployed using Railway with a MySQL database.
 
 ## Technology Stack
 
@@ -65,8 +72,6 @@ Library_Book_Management_Scenario_07/
 │       │
 │       └── resources/
 │           ├── templates/
-│           │   ├── index.html
-│           │   └── history.html
 │           └── application.properties
 │
 ├── docs/
@@ -96,17 +101,15 @@ Install the following software:
 
 1. Start the MySQL Server.
 2. Open MySQL Workbench.
-3. Execute the SQL script located at `database/library_schema.sql`.
+3. Execute `database/library_schema.sql`.
 4. The script creates the `library_db` database and sample records.
 
 ### 3. Configure Database Credentials
 
-Configure the following environment variables according to your MySQL setup:
+Configure the database environment variables:
 
 - `DB_USER`
 - `DB_PASSWORD`
-
-The Java application reads the database password through the `DB_PASSWORD` environment variable.
 
 Never upload database credentials or passwords to GitHub.
 
@@ -118,17 +121,17 @@ Open a terminal in the project root directory and execute:
 mvn spring-boot:run
 ```
 
-After the application starts, open:
+Open the application:
 
+```text
 http://localhost:8080
-
-You can now add books, register students, issue books, process returns, view loan records and check student borrowing history.
+```
 
 The default loan duration is 14 days.
 
 ### 5. Run Python Data Analysis
 
-Open another terminal and execute:
+Open another terminal:
 
 ```bash
 cd python
@@ -136,11 +139,13 @@ pip install -r requirements.txt
 python analyze_library.py
 ```
 
-Ensure that the Python database credentials are configured before running the analysis.
+Configure the database connection using environment variables before running the analysis.
+
+For a local MySQL database, configure its host and port. For the deployed Railway database, use the Railway TCP Proxy hostname and port.
 
 ### 6. Analysis Outputs
 
-After successful execution, the analysis generates the following files inside `python/visualizations/`:
+The Python analysis generates the following files inside `python/visualizations/`:
 
 | File | Description |
 |---|---|
@@ -153,18 +158,18 @@ Create loan records through the web application before running the Python analys
 
 ## Testing
 
-The application was tested using functional test cases covering:
+The application was tested using 10 functional test cases covering:
 
-- Adding books.
-- Registering students.
-- Issuing available books.
-- Preventing issue when stock is unavailable.
-- Returning issued books.
-- Preventing duplicate returns.
-- Identifying overdue loans.
-- Generating Python analysis outputs.
-- Viewing student borrowing history.
-- Displaying available book inventory.
+1. Adding books.
+2. Registering students.
+3. Issuing available books.
+4. Preventing issue when stock is unavailable.
+5. Returning issued books.
+6. Preventing duplicate returns.
+7. Identifying overdue loans.
+8. Generating Python analysis outputs.
+9. Viewing student borrowing history.
+10. Displaying available book inventory.
 
 All 10 functional test cases were verified successfully.
 
@@ -176,7 +181,7 @@ The `docs/` directory contains:
 - **DESIGN.md** – System design documentation.
 - **SQL_QUERIES.md** – Database queries.
 - **TEST_CASES.md** – Functional test cases.
-- **diagrams/** – System design diagrams and their images.
+- **diagrams/** – System design diagrams and images.
 
 ## Limitations
 
@@ -200,12 +205,13 @@ Additional security measures and database backups are recommended before real-wo
 
 ## GitHub Submission
 
-Upload the source code, SQL scripts, documentation, Python files, and relevant generated charts.
+The repository contains the source code, SQL scripts, documentation, Python analysis files, and generated charts.
 
-Do not upload:
+Sensitive credentials, `.env` files, Python virtual environments, Maven `target/` directories, and temporary files should not be uploaded.
 
-- Database passwords or credentials.
-- `.env` files.
-- Python virtual environments.
-- Maven `target/` build directory.
-- Temporary files and unnecessary logs.
+---
+
+**Project:** Library Book Management and Reading Pattern Analysis System  
+**Scenario:** 07  
+**Deployment:** Railway  
+**Source Code:** GitHub

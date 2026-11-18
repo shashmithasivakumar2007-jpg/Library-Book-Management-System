@@ -10,8 +10,9 @@ from sqlalchemy.engine import URL
 
 # Database configuration
 u = os.getenv("DB_USER", "library_reader")
-p = os.getenv("DB_PASSWORD", "Library@2026")
-host = os.getenv("DB_HOST", "localhost")
+p = os.getenv("DB_PASSWORD")
+host = os.getenv("DB_HOST", "junction.proxy.rlwy.net")
+port = int(os.getenv("DB_PORT", "55563"))
 database = os.getenv("DB_NAME", "library_db")
 
 # Database connection
@@ -20,6 +21,7 @@ connection_url = URL.create(
     username=u,
     password=p,
     host=host,
+    port=port,
     database=database
 )
 
