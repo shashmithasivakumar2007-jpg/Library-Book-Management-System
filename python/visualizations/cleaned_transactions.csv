@@ -1,0 +1,8 @@
+loan_id,roll_number,student_name,title,category,issue_date,due_date,return_date,month,overdue
+1,25IT001,Ananya Kumar,Clean Code,Programming,2026-11-17,2026-12-01,2026-11-17,2026-11,False
+2,25IT001,Ananya Kumar,Clean Code,Programming,2026-11-17,2026-12-01,2026-11-17,2026-11,False
+3,25IT001,Ananya Kumar,Clean Code,Programming,2026-11-17,2026-12-01,2026-11-17,2026-11,False
+4,25IT001,Ananya Kumar,Clean Code,Programming,2026-11-17,2026-12-01,,2026-11,False
+5,25IT001,Ananya Kumar,Wings of Fire,Biography,2026-11-17,2026-12-01,2026-11-17,2026-11,False
+6,1009,Shas,The Alchemist,Fiction,2026-11-18,2026-12-02,2026-11-18,2026-11,False
+7,1009,Shas,The Alchemist,Fiction,2026-11-18,2026-12-02,,2026-11,False
